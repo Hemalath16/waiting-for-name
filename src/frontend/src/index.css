@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "General Sans", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.5rem;
+
+    --background: 0.12 0 0;
+    --foreground: 0.98 0 0;
+    --card: 0.18 0 0;
+    --card-foreground: 0.98 0 0;
+    --popover: 0.22 0 0;
+    --popover-foreground: 0.98 0 0;
+
+    --primary: 0.75 0.18 200;
+    --primary-foreground: 0.12 0 0;
+
+    --secondary: 0.55 0.12 260;
+    --secondary-foreground: 0.95 0 0;
+    --muted: 0.45 0.02 0;
+    --muted-foreground: 0.65 0 0;
+
+    --accent: 0.75 0.18 200;
+    --accent-foreground: 0.12 0 0;
+
+    --destructive: 0.6 0.25 30;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.28 0.01 0;
+    --input: 0.22 0.01 0;
+    --ring: 0.75 0.18 200;
+
+    --chart-1: 0.68 0.24 142;
+    --chart-2: 0.75 0.19 80;
+    --chart-3: 0.6 0.25 30;
+    --chart-4: 0.75 0.18 200;
+    --chart-5: 0.55 0.12 260;
+
+    --notification-critical: 0.6 0.25 30;
+    --notification-high: 0.75 0.19 80;
+
+    --sidebar: 0.18 0 0;
+    --sidebar-foreground: 0.98 0 0;
+    --sidebar-primary: 0.75 0.18 200;
+    --sidebar-primary-foreground: 0.12 0 0;
+    --sidebar-accent: 0.28 0.01 0;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.28 0.01 0;
+    --sidebar-ring: 0.75 0.18 200;
+  }
+
+  .dark {
+    --background: 0.12 0 0;
+    --foreground: 0.98 0 0;
+    --card: 0.18 0 0;
+    --card-foreground: 0.98 0 0;
+    --popover: 0.22 0 0;
+    --popover-foreground: 0.98 0 0;
+
+    --primary: 0.75 0.18 200;
+    --primary-foreground: 0.12 0 0;
+
+    --secondary: 0.55 0.12 260;
+    --secondary-foreground: 0.95 0 0;
+    --muted: 0.45 0.02 0;
+    --muted-foreground: 0.65 0 0;
+
+    --accent: 0.75 0.18 200;
+    --accent-foreground: 0.12 0 0;
+
+    --destructive: 0.6 0.25 30;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.28 0.01 0;
+    --input: 0.22 0.01 0;
+    --ring: 0.75 0.18 200;
+
+    --chart-1: 0.68 0.24 142;
+    --chart-2: 0.75 0.19 80;
+    --chart-3: 0.6 0.25 30;
+    --chart-4: 0.75 0.18 200;
+    --chart-5: 0.55 0.12 260;
+
+    --notification-critical: 0.6 0.25 30;
+    --notification-high: 0.75 0.19 80;
+
+    --sidebar: 0.18 0 0;
+    --sidebar-foreground: 0.98 0 0;
+    --sidebar-primary: 0.75 0.18 200;
+    --sidebar-primary-foreground: 0.12 0 0;
+    --sidebar-accent: 0.28 0.01 0;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.28 0.01 0;
+    --sidebar-ring: 0.75 0.18 200;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .status-success {
+    @apply border-l-4 border-chart-1;
+  }
+
+  .status-warning {
+    @apply border-l-4 border-chart-2;
+  }
+
+  .status-destructive {
+    @apply border-l-4 border-chart-3;
+  }
+
+  .status-secondary {
+    @apply border-l-4 border-chart-5;
+  }
+
+  .pulse-border-left {
+    animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .pulse-badge {
+    animation: pulse-badge 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .emergency-card {
+    @apply backdrop-blur rounded-md p-4 transition-smooth shadow-md;
+    background-color: oklch(var(--card) / 0.8);
+  }
+
+  .notification-badge {
+    @apply absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-semibold rounded-full;
+  }
+
+  .notification-badge-critical {
+    @apply bg-chart-3 text-foreground;
+  }
+
+  .notification-badge-high {
+    @apply bg-chart-2 text-foreground;
+  }
+
+  .emergency-action-button {
+    @apply px-3 py-1.5 text-sm font-medium rounded-sm transition-smooth border;
+  }
+
+  .emergency-action-primary {
+    @apply bg-primary text-primary-foreground border-primary hover:shadow-elevated;
+  }
+
+  .emergency-action-secondary {
+    @apply bg-muted text-muted-foreground border-border hover:bg-muted/80;
+  }
+
+  .emergency-status-label {
+    @apply text-xs font-mono text-muted-foreground uppercase tracking-wide;
+  }
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    border-left-color: oklch(var(--chart-1) / 1);
+  }
+  50% {
+    border-left-color: oklch(var(--chart-1) / 0.5);
+  }
+}
+
+@keyframes pulse-badge {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

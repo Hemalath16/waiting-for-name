@@ -1,0 +1,23 @@
+{
+  "overview": "TrafficAI is a full-stack traffic management dashboard with role-based access for Control Panel operators, Emergency responders, Traffic Users, and Traffic Police. Features a shared live map synced across all tabs, emergency alert management with acknowledge/respond tracking, notification badges, and real-time signal monitoring.",
+  "features": [
+    "4-tab role navigation: Control Panel, Emergency Panel, Traffic User, Traffic Police",
+    "Shared interactive map synced in real-time across all 4 tabs",
+    "Notification badges for new critical/high-urgency alerts",
+    "Acknowledge and Respond buttons on emergency messages with status tracking",
+    "Traffic signal grid with read/write controls based on role",
+    "Emergency alert submission and dispatch management",
+    "Traffic Police dispatch interface with alert filtering",
+    "Read-only Traffic User view of signal status and congestion"
+  ],
+  "category": "productivity",
+  "tags": [
+    "traffic",
+    "emergency",
+    "dashboard",
+    "map",
+    "real-time",
+    "role-based"
+  ],
+  "last_updated": "2026-04-10T21:30:02.484Z"
+}

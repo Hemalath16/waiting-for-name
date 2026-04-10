@@ -1,0 +1,47 @@
+type Urgency = 
+ variant {
+   critical;
+   high;
+   normal;
+ };
+type TrafficSignalView = 
+ record {
+   id: nat;
+   lastUpdated: int;
+   location: text;
+   status: SignalStatus;
+ };
+type SignalStatus = 
+ variant {
+   green;
+   red;
+   yellow;
+ };
+type EmergencyMessageView = 
+ record {
+   acknowledged: bool;
+   acknowledgedAt: opt int;
+   dispatched: bool;
+   dispatchedAt: opt int;
+   id: nat;
+   location: text;
+   message: text;
+   resolved: bool;
+   respondedAt: opt int;
+   response: opt text;
+   timestamp: int;
+   urgency: Urgency;
+ };
+service : {
+  acknowledgeEmergencyMessage: (id: nat) -> (bool);
+  dispatchEmergencyMessage: (id: nat) -> (bool);
+  getSignal: (id: nat) -> (opt TrafficSignalView) query;
+  listEmergencyMessages: () -> (vec EmergencyMessageView) query;
+  listSignals: () -> (vec TrafficSignalView) query;
+  resolveEmergencyMessage: (id: nat) -> (bool);
+  respondToEmergencyMessage: (id: nat, response: text) -> (bool);
+  submitEmergencyMessage: (message: text, urgency: Urgency, location:
+   text) -> (nat);
+  unresolvedEmergencyCount: () -> (nat) query;
+  updateSignalStatus: (id: nat, status: SignalStatus) -> (bool);
+}

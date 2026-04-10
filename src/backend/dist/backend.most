@@ -1,0 +1,70 @@
+// Version: 3.0.0
+type EmergencyMessage__899931918 =
+  {
+    var acknowledged : Bool;
+    var acknowledgedAt : ?Int;
+    var dispatched : Bool;
+    var dispatchedAt : ?Int;
+    id : Nat;
+    location : Text;
+    message : Text;
+    var resolved : Bool;
+    var respondedAt : ?Int;
+    var response : ?Text;
+    timestamp : Int;
+    urgency : Urgency__657644783
+  };
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type OldEmergencyMessage__655590415 =
+  {
+    id : Nat;
+    location : Text;
+    message : Text;
+    var resolved : Bool;
+    timestamp : Int;
+    urgency : OldUrgency__1071825138
+  };
+type OldUrgency__1071825138 = {#critical; #high; #normal};
+type SignalStatus__564911049 = {#green; #red; #yellow};
+type TrafficSignal__839617550 =
+  {
+    id : Nat;
+    var lastUpdated : Int;
+    location : Text;
+    var status : SignalStatus__564911049
+  };
+type Urgency__657644783 = {#critical; #high; #normal};
+actor ({
+  in emergencyMessages : List__415060402<OldEmergencyMessage__655590415>;
+  stable var nextMessageId : Nat;
+  stable var nextSignalId : Nat;
+  stable signals :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TrafficSignal__839617550]];
+      var elementIndex : Nat__490723111
+    }
+}, {
+  stable emergencyMessages :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?EmergencyMessage__899931918]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextMessageId : Nat;
+  stable var nextSignalId : Nat;
+  stable signals :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TrafficSignal__839617550]];
+      var elementIndex : Nat__490723111
+    }
+}) ;
